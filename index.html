@@ -1,0 +1,210 @@
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>TOTO 6/49</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href='https://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+      <style>
+         body {
+         margin: 0;
+         padding: 0;
+         font-family: "Open Sans", sans-serif;
+         background-color: #606060FF;
+         }
+         .clearfix {
+         clear: both;
+         }
+         .floatfix:after {
+         display: block;
+         content: "";
+         clear: both;
+         }
+         h1 {
+         text-align: center;
+         color: #ef6d3b;
+         text-shadow: 1px 1px 1px #000;
+         font-family: "Chewy";
+         font-size: 50px;
+         }
+         .position {
+         width: 1070px;
+         margin: 0 auto;
+         }
+         .wrapper {
+         width: 420px;
+         background-color: #D6ED17FF;
+         overflow: hidden;
+         padding: 20px;
+         border-radius: 20px;
+         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+         float: left;
+         margin-left: 50px;
+         }
+         .wrapper .ball {
+         width: 40px;
+         height: 40px;
+         text-align: center;
+         line-height: 40px;
+         color: #d62727;
+         border-radius: 100%;
+         float: left;
+         background-color: #fff;
+         margin: 10px;
+         font-weight: 500;
+         box-shadow: 1px 1px 0.5px #000;
+         }
+         #generate {
+         display: block;
+         background-color: #ef6d3b;
+         outline: none;
+         padding: 15px;
+         border-radius: 10px;
+         font-size: 20px;
+         margin: 50px auto;
+         width: 150px;
+         box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+         text-transform: uppercase;
+         font-family: "Chewy";
+         color: #3f2860;
+         }
+         #history {
+         text-align: center;
+         width: 460px;
+         height: 420px;
+         padding: 20px 0;
+         border-radius: 20px;
+         background-color: #D6ED17FF;
+         float: left;
+         margin-left: 50px;
+         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+         overflow: auto;
+         }
+         #history p {
+         font-weight: 800;
+         color: #3d3c3a;
+         }
+      </style>
+   </head>
+   <body>
+      <h1>ТОТО ГЕНЕРАТОР</h1>
+      <div class="position floatfix">
+         <div id="history"></div>
+         <div class="wrapper">
+            <p class="ball">1</p>
+            <p class="ball">2</p>
+            <p class="ball">3</p>
+            <p class="ball">4</p>
+            <p class="ball">5</p>
+            <p class="ball">6</p>
+            <p class="ball">7</p>
+            <br class="clearfix">
+            <p class="ball">8</p>
+            <p class="ball">9</p>
+            <p class="ball">10</p>
+            <p class="ball">11</p>
+            <p class="ball">12</p>
+            <p class="ball">13</p>
+            <p class="ball">14</p>
+            <br class="clearfix">
+            <p class="ball">15</p>
+            <p class="ball">16</p>
+            <p class="ball">17</p>
+            <p class="ball">18</p>
+            <p class="ball">19</p>
+            <p class="ball">20</p>
+            <p class="ball">21</p>
+            <br class="clearfix">
+            <p class="ball">22</p>
+            <p class="ball">23</p>
+            <p class="ball">24</p>
+            <p class="ball">25</p>
+            <p class="ball">26</p>
+            <p class="ball">27</p>
+            <p class="ball">28</p>
+            <br class="clearfix">
+            <p class="ball">29</p>
+            <p class="ball">30</p>
+            <p class="ball">31</p>
+            <p class="ball">32</p>
+            <p class="ball">33</p>
+            <p class="ball">34</p>
+            <p class="ball">35</p>
+            <br class="clearfix">
+            <p class="ball">36</p>
+            <p class="ball">37</p>
+            <p class="ball">38</p>
+            <p class="ball">39</p>
+            <p class="ball">40</p>
+            <p class="ball">41</p>
+            <p class="ball">42</p>
+            <br class="clearfix">
+            <p class="ball">43</p>
+            <p class="ball">44</p>
+            <p class="ball">45</p>
+            <p class="ball">46</p>
+            <p class="ball">47</p>
+            <p class="ball">48</p>
+            <p class="ball">49</p>
+         </div>
+      </div>
+      <button type="button" id="generate" class="clearfix">Генерирай</button>
+      <script>
+         var button = document.getElementById("generate");
+         
+         button.addEventListener("click", function () {
+         
+         //get random numbers
+         
+         var numbers = [];
+         var ball = document.getElementsByClassName("ball");
+         
+         while (numbers.length < 6) {
+         
+         var random = Math.floor(Math.random() * 49) + 1;
+         
+         if (numbers.indexOf(random) == -1) {
+             numbers.push(random);
+         }
+         }
+         
+         //sort numbers in array
+         
+         numbers.sort(function (a, b) {
+         return a - b;
+         });
+         
+         //color balls
+         
+         for (var i = 0; i < ball.length; i++) {
+         
+         ball[i].style.backgroundColor = "white";
+         ball[i].style.color = "red";
+         
+         for (var j = 0; j < numbers.length; j++) {
+             if (numbers[j] == parseInt(ball[i].innerHTML)) {
+                 ball[i].style.backgroundColor = "red";
+                 ball[i].style.color = "white";
+             }
+         }
+         }
+         
+         //add numbers to history
+         
+         var history = [];
+         var historyDiv = document.getElementById("history");
+         var para = document.createElement("p");
+         history.push(numbers.join(", "));
+         
+         for (var k in history) {
+         
+         var node = document.createTextNode(history[k]);
+         para.appendChild(node);
+         historyDiv.appendChild(para);
+         
+         }
+         
+         });
+      </script>
+   </body>
+</html>
